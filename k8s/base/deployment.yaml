@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokerage-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brokerage-app
+  template:
+    metadata:
+      labels:
+        app: brokerage-app
+    spec:
+      containers:
+        - name: brokerage
+          image: brokerage:latest
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: test
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: brokerage-config

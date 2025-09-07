@@ -1,0 +1,18 @@
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: brokerage-config
+    files:
+      - application.yaml=config/application.yaml
+
+images:
+  - name: brokerage
+    newTag: live-latest
+
+patches:
+  - path: patch.yaml
+
+
+generatorOptions:
+  disableNameSuffixHash: true

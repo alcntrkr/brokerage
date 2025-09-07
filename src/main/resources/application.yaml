@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: local
+
+security:
+  jwt:
+    secret: ChangeThisSecretKeyForDemoOnlyChangeMe
+    expirationMs: 3600000
+
+server:
+  port: 8080
+
+# Springdoc/Swagger can be added later if needed
